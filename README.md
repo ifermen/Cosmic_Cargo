@@ -1,73 +1,61 @@
-# React + TypeScript + Vite
+# Modelos
+export interface Character {
+    id:       number;
+    name:     string;
+    status:   string;
+    species:  string;
+    type:     string;
+    gender:   string;
+    origin:   Location;
+    location: Location;
+    image:    string;
+    episode:  string[];
+    url:      string;
+    created:  Date;
+}
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+export interface Location {
+    name: string;
+    url:  string;
+}
 
-Currently, two official plugins are available:
+# Layout
+- Cabecera donde estará el menú de navegación (React Router)
+- Main donde se cargará las vistas
+- Footer que dirá: Creado por los Marcianitos (Iván, Abel, Paco, Luis, José María).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Contexto
+- Objeto {credito=1000,combustible=100,tripulacio:lista[4]}
 
-## React Compiler
+# Vista 1 | Home
+- Resumen (credito y combustible consumido(NO ACTUAL))
+- Lista de tripulacion / mensaje informativo y enlace a zona de contratacion
+- ????
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Vista 2 | Hiring (Conexión a API)
+- Llamadas a la Api (https://rickandmortyapi.com/api/character) **useEffect**
+- Interfaz de character (**./model**)
+- Input para buscar candidatos
+  - Mostrar una tabla de candidatos (cabecera: name, species, status, gender, action (donde estará el boton de contratar)).
+  - Botón "Contratar": Al hacer click, cuesta 200 créditos (solo  si tienes menos de 4 tripulantes en el contexto,  si tienes dinero suficiente y si no está muerto).
+  - Status 'Dead':  si el personaje esta muerto debe aparecer el botón deshabilitado y la tarjeta en gris (Renderizado condicional basado en datos de API).
 
-## Expanding the ESLint configuration
+# Vista 3 | Quest Room
+- Formulario:
+  - Input select para elegir al tripulante elegido (del context). 
+  - Input select con 5 planetas harcodeados (en un futuro seran de la api).
+  - Boton submit con el texto Start Mission.
+- Evento Submit:
+  - Restamos combustible al almacenado en el contexto (Aleatorio 5 - 50%).
+  - Crear temporizador (**setTimeout**) al enviar el formulario (**evento submit**).
+  - Sumar creditos (aleatorio) al total del contexto.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+# Opcional
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## LocalStorage
+  Contexto también se guardará en LocalStorage.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## ¿HOOK?
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## ¿Detalle del tripulante?
+ 
