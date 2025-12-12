@@ -1,6 +1,7 @@
 # **⚠️ ES OBLIGATORIO COMENTAR EL CODIGO ⚠️**
 
 # Modelos
+```ts
 export interface Character {
     id:       number;
     name:     string;
@@ -15,11 +16,27 @@ export interface Character {
     url:      string;
     created:  Date;
 }
+```
 
+```ts
 export interface Location {
     name: string;
     url:  string;
 }
+```
+
+# Estructura de carptas
+```
+src/
+├── assets/
+├── components/
+├── contexts/
+├── hooks/
+├── layouts/
+├── pages/
+├── services/
+└── types/
+```
 
 # React Router -> Iván / Luis
 - Bloquear la navegación en caso de que no haya combustible
