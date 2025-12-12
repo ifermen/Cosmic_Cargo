@@ -1,10 +1,10 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ShipContextProvider } from "./contexts/ShipContext";
-import Home from "./components/Home";
-import Hiring from "./components/Hiring";
-import QuestRoom from "./components/QuestRoom";
 import { Layout } from "./layouts/Layout";
+import { Home } from "./components/Home";
+import { Hiring } from "./components/Hiring";
+import { QuestRoom } from "./components/QuestRoom";
 
 function App() {
   return (
