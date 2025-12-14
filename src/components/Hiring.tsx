@@ -1,29 +1,33 @@
 import React, { useEffect, useState, type ChangeEvent } from "react";
 import type { Character } from "../types";
+import {fetchCharacters} from "../services/hiringService";
 import {useShipContext} from "../contexts/ShipContext";
+
 export const Hiring: React.FC = () => {
     //Estado que almacena los personajes obtenidos desde la api
     const [characters,setCharacters] = useState<Character[]>([]);
     const [search,setSearch] = useState<string>('');
     //Obtiene las acciones del context
     const {credit,crewList} = useShipContext();
+    
     /**
      * useEffect
-     * Realiza la llamada a la api para cargar todos los personajes
+     * Realiza la llamada a la api para cargar todos los personajes en el service
+     * Leemos los personajes
      */
     useEffect(()=>{
-        const fetchCharacters = async ():Promise<void>=>{
-        const response = await fetch('https://rickandmortyapi.com/api/character');
-        const characters = await response.json();
-        setCharacters(characters.results);
-        }
+      const loadCharacters = async()=>{
         try{
-            fetchCharacters();
+          const characters = await fetchCharacters();
+          setCharacters(characters);
         }catch(error){
-            console.error("Error al cargar los personajes",error); 
+          console.error("Error en conseguir a los personajes",error);
         }
+      }
+      loadCharacters();
     },[])
 
+    
 
     /**
      * Filtrado de personajes por nombre que crea un array que el nombre del personaje se asemeje a lo que se busca
@@ -45,6 +49,7 @@ export const Hiring: React.FC = () => {
   
   <h1>Reclutar Personajes</h1>
 
+    <h2>{filteredCharacters.length===0?'No hay personajes para reclutar':''}</h2>
   
   <input
     type="text"
@@ -65,6 +70,7 @@ export const Hiring: React.FC = () => {
     </thead>
 
     <tbody>
+      
       {filteredCharacters.map((character) => {
         // No se puede contratar a ningún personaje que cumpla alguno de estos requisitos
         const isDead: boolean = character.status === "Dead";
