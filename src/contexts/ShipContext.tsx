@@ -29,6 +29,7 @@ export const ShipContextProvider = ({children}:ShipContextProviderProps) => {
     const [credit,setCredit] = useState(1000);
     const [fuel,setFuel] = useState(100);
     const [crewList,setCrew] = useState<Character[]>([]);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     /**
      * Creamos useEffect para cargar los datos de localStorage al cargar la pagina
@@ -36,19 +37,23 @@ export const ShipContextProvider = ({children}:ShipContextProviderProps) => {
      */
     useEffect(() => {
         const data = localStorageService.getData();
-        if(data){
+        if (data) {
             setCredit(data.credit);
             setFuel(data.fuel);
             setCrew(data.crewList);
         }
-    }, [])
+        setIsLoaded(true);
+    }, []);
+
     /**
      * Cada vez que se modifique credit, fuel, crewList se ejecuta 
      * el useEffect para guardarlos en el localStorage
      */
-     useEffect(() => {
-        localStorageService.saveData(credit, fuel, crewList);
-     }, [credit, fuel, crewList]);
+    useEffect(() => {
+        if (isLoaded){
+            localStorageService.saveData(credit, fuel, crewList);
+        }
+    }, [credit, fuel, crewList, isLoaded]);
 
 
     /**
