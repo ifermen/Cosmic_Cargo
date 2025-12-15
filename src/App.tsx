@@ -4,7 +4,7 @@ import { ShipContextProvider } from "./contexts/ShipContext";
 import { Layout } from "./layouts/Layout";
 import { Home } from "./components/Home";
 import { Hiring } from "./components/Hiring";
-import { QuestRoom } from "./components/QuestRoom";
+import QuestRoom from "./components/QuestRoom";
 
 function App() {
   return (
