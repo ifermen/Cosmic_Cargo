@@ -2,9 +2,9 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ShipContextProvider } from "./contexts/ShipContext";
 import { Layout } from "./layouts/Layout";
-import { Home } from "./components/Home";
-import { Hiring } from "./components/Hiring";
-import QuestRoom from "./components/QuestRoom";
+import { Home } from "./pages/Home/Home";
+import { Hiring } from "./pages/Hiring/Hiring";
+import QuestRoom from "./pages/QuestRoom/QuestRoom";
 
 function App() {
   return (

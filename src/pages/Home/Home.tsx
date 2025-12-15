@@ -1,4 +1,5 @@
-import {useShipContext} from '../contexts/ShipContext'
+import { CrewList } from '../../components/CrewList/CrewList';
+import {useShipContext} from '../../contexts/ShipContext'
 
 
 export function Home() {
@@ -28,15 +29,7 @@ export function Home() {
                 <p>
                     Tripulacion
                 </p>
-                <ul>
-                    {crewList.map((person)=>{
-                        return(
-                            <li>
-                                {person.name} el {person.species}
-                            </li>
-                        )
-                    })}
-                </ul>
+                <CrewList></CrewList>
 
                 <a href='./Hiring'>Cantina</a>
             </div>
