@@ -1,15 +1,27 @@
-html, body{
-    padding: 0;
-    margin: 0;
+body, html{
+  font-family: 'Orbitron', sans-serif;
+  padding: 0;
+  margin: 0;
 }
-#root{
-    background-image: url('./assets/background_galaxy.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    display: grid;
-    min-height: 100dvh;
-    grid-template-rows: auto 1fr auto;
-    color: #00ffff;
+
+#root {
+  background-image: url('./assets/background_galaxy.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  display: grid;
+  min-height: 100dvh;
+  grid-template-rows: auto 1fr auto;
+
+  color: #00ffff;
+}
+
+.title{
+  border: 3px solid #00ffff;
+  box-shadow: 0 0 3px#00ffff, 0 0 6px#00ffff;
+  background-color: rgba(0, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 0;
 }

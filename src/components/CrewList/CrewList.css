@@ -1,0 +1,36 @@
+
+
+
+.crewList {
+  width: fit-content;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas iguales */
+  gap: 10px; /* espacio entre filas y columnas */
+  list-style: none; /* quitar viñetas */
+  padding: 0;
+}
+
+.crewList li {
+  padding: 5px;
+  width: fit-content;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border: 3px solid #00ffff;
+  box-shadow: 0 0 3px#00ffff, 0 0 6px#00ffff;
+  background-color: rgba(0, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.crewList img{
+  border-radius: 5px;
+  width: 200px;
+}
+
+.crewList span{
+  width: fit-content;
+}

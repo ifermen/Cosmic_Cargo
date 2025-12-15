@@ -1,5 +1,6 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import type { Character } from "../types";
+import { localStorageService } from "../services/localStorageService";
 
 interface ShipContextType {
     credit : number;
@@ -13,6 +14,10 @@ interface ShipContextType {
 }
 const ShipContext = createContext<ShipContextType | null>(null);
 
+/**
+ * Hook personalizado que nos ayuda a obtener un contexto que nunca sea nulo, si es nulo lanza una excepcion
+ * @returns 
+ */
 export const useShipContext = () => {
     const context = useContext(ShipContext);
     if(!context) {
@@ -20,7 +25,6 @@ export const useShipContext = () => {
     }
     return context;
 }
-
 interface ShipContextProviderProps {
     children : ReactNode
 }
@@ -29,6 +33,27 @@ export const ShipContextProvider = ({children}:ShipContextProviderProps) => {
     const [credit,setCredit] = useState(1000);
     const [fuel,setFuel] = useState(100);
     const [crewList,setCrew] = useState<Character[]>([]);
+
+    /**
+     * Creamos useEffect para cargar los datos de localStorage al cargar la pagina
+     * hacemos los set del use state para poner los valores 
+     */
+    useEffect(() => {
+        const data = localStorageService.getData();
+        if(data){
+            setCredit(data.credit);
+            setFuel(data.fuel);
+            setCrew(data.crewList);
+        }
+    }, [])
+    /**
+     * Cada vez que se modifique credit, fuel, crewList se ejecuta 
+     * el useEffect para guardarlos en el localStorage
+     */
+     useEffect(() => {
+        localStorageService.saveData(credit, fuel, crewList);
+     }, [credit, fuel, crewList]);
+
 
     /**
      * Resta credito al del contexto
