@@ -1,14 +1,14 @@
 import React, { useEffect, useState, type ChangeEvent } from "react";
-import type { Character } from "../types";
-import {fetchCharacters} from "../services/hiringService";
+import {fetchCharacters, getCharacterId} from "../services/characterService";
 import {useShipContext} from "../contexts/ShipContext";
+import type { Character } from "../types";
 
 export const Hiring: React.FC = () => {
     //Estado que almacena los personajes obtenidos desde la api
     const [characters,setCharacters] = useState<Character[]>([]);
     const [search,setSearch] = useState<string>('');
     //Obtiene las acciones del context
-    const {credit,crewList} = useShipContext();
+    const {credit,crewList,addCharacterToCrewList} = useShipContext();
     
     /**
      * useEffect
@@ -25,9 +25,18 @@ export const Hiring: React.FC = () => {
         }
       }
       loadCharacters();
-    },[])
+    },[crewList])
 
     
+    const handleAddCharacter = async(id:number)=>{
+      try{
+        const character = await getCharacterId(id);
+        addCharacterToCrewList(character);
+      }catch(error){
+        console.error("Error en añadir el personaje",error);
+      }
+      
+    }
 
     /**
      * Filtrado de personajes por nombre que crea un array que el nombre del personaje se asemeje a lo que se busca
@@ -44,6 +53,13 @@ export const Hiring: React.FC = () => {
 
   return (
     <div>
+
+      <h2>Lista de personajes de la Crew</h2>
+      <ul>
+      {crewList.map(character =>(
+        <li key={character.id}>{character.name}</li>
+      ))}
+      </ul>
 
       <section className="hiring">
   
@@ -76,7 +92,9 @@ export const Hiring: React.FC = () => {
         const isDead: boolean = character.status === "Dead";
         const noCredits: boolean = credit < 200;
         const crewFull: boolean = crewList.length >= 4;
-
+        const crewCharacterPut :boolean = crewList.some(crewCharacter=>{
+          return crewCharacter.id==character.id
+        });
         return (
           <tr
             key={character.id}
@@ -87,8 +105,8 @@ export const Hiring: React.FC = () => {
             <td>{character.gender}</td>
             <td>
               {/* Botón de Reclutar */}
-              <button disabled={isDead || noCredits || crewFull}>
-                {isDead ? "No disponible" : "Reclutar"}
+              <button disabled={isDead || noCredits || crewFull || crewCharacterPut } onClick={()=>handleAddCharacter(character.id)}>
+                {isDead || crewCharacterPut ? "No disponible" : "Reclutar"}
               </button>
             </td>
           </tr>
