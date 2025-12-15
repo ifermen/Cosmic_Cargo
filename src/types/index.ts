@@ -12,3 +12,8 @@ export interface Character {
     url: string; 
     created: Date; 
 }
+
+export interface Location {
+  name: string;
+  url: string;
+}
