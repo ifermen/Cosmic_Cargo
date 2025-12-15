@@ -32,6 +32,7 @@ export const Hiring: React.FC = () => {
       try{
         const character = await getCharacterId(id);
         addCharacterToCrewList(character);
+        alert("Personaje añadido con éxito");
       }catch(error){
         console.error("Error en añadir el personaje",error);
       }
@@ -77,6 +78,7 @@ export const Hiring: React.FC = () => {
   <table>
     <thead>
       <tr>
+        <th></th>
         <th>Nombre</th>
         <th>Especie</th>
         <th>Estado Vital</th>
@@ -95,10 +97,18 @@ export const Hiring: React.FC = () => {
         const crewCharacterPut :boolean = crewList.some(crewCharacter=>{
           return crewCharacter.id==character.id
         });
+
+
+          
+        
+
         return (
+          
           <tr
             key={character.id}
           >
+             
+            <td><img src={character.image} alt="Imagen de cada personaje" className="imageCharacters"></img></td>
             <td>{character.name}</td>
             <td>{character.species}</td>
             <td>{character.status}</td>
@@ -106,11 +116,32 @@ export const Hiring: React.FC = () => {
             <td>
               {/* Botón de Reclutar */}
               <button disabled={isDead || noCredits || crewFull || crewCharacterPut } onClick={()=>handleAddCharacter(character.id)}>
-                {isDead || crewCharacterPut ? "No disponible" : "Reclutar"}
+                
+                {
+                  isDead  ? (
+                    "No disponible"
+                  ) : crewFull ? (
+                    "Equipo lleno"
+                  ) : crewCharacterPut?(
+                    "Personaje añadido"
+                  ) : noCredits?(
+                    "No créditos"
+                  ) : (
+                    "Reclutar"
+                  )
+                }
+                  
+
+                
               </button>
+             
             </td>
           </tr>
+          
+          
+
         );
+
       })}
     </tbody>
   </table>
