@@ -14,6 +14,10 @@ interface ShipContextType {
 }
 const ShipContext = createContext<ShipContextType | null>(null);
 
+/**
+ * Hook personalizado que nos ayuda a obtener un contexto que nunca sea nulo, si es nulo lanza una excepcion
+ * @returns 
+ */
 export const useShipContext = () => {
     const context = useContext(ShipContext);
     if(!context) {

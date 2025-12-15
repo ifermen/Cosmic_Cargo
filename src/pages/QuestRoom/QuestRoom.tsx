@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useShipContext } from "../contexts/ShipContext";
-import type { Location, Character } from "../types";
-import { locationService } from "../services/locationService";
+import { useShipContext } from "../../contexts/ShipContext";
+import type { Location, Character } from "../../types";
+import { locationService } from "../../services/locationService";
 
 export const QuestRoom = () => {
   const { crewList, fuel, subtractFuel, addCredit } = useShipContext();
