@@ -36,7 +36,6 @@ export const Hiring: React.FC = () => {
     try {
       const character = await getCharacterId(id);
       addCharacterToCrewList(character);
-      alert("Personaje añadido con éxito");
       subtractCredit(200);
     } catch (error) {
       console.error("Error en añadir el personaje", error);
@@ -84,7 +83,7 @@ export const Hiring: React.FC = () => {
 
           <table>
             <thead>
-              <tr>
+              <tr className="trTitlesTable">
                 <th></th>
                 <th>Nombre</th>
                 <th>Especie</th>
@@ -107,7 +106,7 @@ export const Hiring: React.FC = () => {
                 );
 
                 return (
-                  <tr key={character.id}>
+                  <tr key={character.id} className="trCharacters">
                     <td>
                       <img
                         src={character.image}
