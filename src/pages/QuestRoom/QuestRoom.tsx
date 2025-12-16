@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { useShipContext } from "../../contexts/ShipContext";
 import type { Location, Character } from "../../types";
 import { locationService } from "../../services/locationService";
+import "./QuestRoom.css";
 
 export const QuestRoom = () => {
   const { crewList, fuel, subtractFuel, addCredit } = useShipContext();
+  const [isError, setIsError] = useState(false);
 
   // Estado
   const [planets, setPlanets] = useState<Location[]>([]);
@@ -38,6 +40,7 @@ export const QuestRoom = () => {
     // Validaciones
     if (selectedCrew.length === 0 || selectedPlanet === "") {
       setMessage("Debes seleccionar al menos un tripulante y un planeta.");
+      setIsError(true);
       return;
     }
 
@@ -46,6 +49,7 @@ export const QuestRoom = () => {
 
     if (fuel < fuelCost) {
       setMessage("No hay suficiente combustible para esta misión.");
+      setIsError(true);
       return;
     }
 
@@ -66,6 +70,7 @@ export const QuestRoom = () => {
         )?.name;
 
         setLoading(false);
+        setIsError(false);
         setMessage(
             `Misión cumplida en ${planetName}
                 Tripulantes enviados: ${selectedCrew.length}
@@ -80,7 +85,7 @@ export const QuestRoom = () => {
   };
 
     return (
-        <div>
+        <div className="quest-room">
         <h1>Sala de Misiones</h1>
         <p>Envía a tu tripulación a explorar.</p>
 
@@ -137,7 +142,9 @@ export const QuestRoom = () => {
         {loading && <p>⏳ Misión en curso... (3s)</p>}
 
         {/* RESULTADO */}
-        {message && <p style={{ color: "green", whiteSpace: "pre-line" }}>{message}</p>}
+        {message && (
+          <p className={isError ? "message-error" : "message-success"}> {message}</p>
+        )}
 
         <p>Tripulación actual: {crewList.length}</p>
         </div>
