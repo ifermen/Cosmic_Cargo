@@ -13,8 +13,7 @@
 
 .crewList li {
   padding: 5px;
-  width: fit-content;
-
+  margin: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,9 +27,38 @@
 
 .crewList img{
   border-radius: 5px;
-  width: 200px;
+  width: 250px;
 }
 
 .crewList span{
   width: fit-content;
+}
+.crewList {
+  margin: 0 auto;
+  padding: 10px;
+  margin-left: 100px;
+}
+
+/* Opcional: centrar el título igual que la lista */
+.title {
+  text-align: center;
+  padding: 50px;
+  margin: 40px;
+  margin-left: 107px;
+
+}
+.crewList button{
+  width: fit-content;
+  display: grid;
+  margin: 1%;
+  padding: 8px 16px;
+  margin-top: 10px;
+  background-color: #ff4d4d;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px #ff4d4d, 0 0 10px #ff4d4d;
 }

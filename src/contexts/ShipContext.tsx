@@ -11,6 +11,7 @@ interface ShipContextType {
     addFuel : (fuelToAdd:number) => void;
     addCharacterToCrewList : (character:Character) => void;
     crewList: Character[];
+    deleteCharacterById : (id : number) => void;
 }
 const ShipContext = createContext<ShipContextType | null>(null);
 
@@ -116,6 +117,16 @@ export const ShipContextProvider = ({children}:ShipContextProviderProps) => {
         setCrew([...crewList,character]);
     }
 
+    /**
+     * 
+     * @param id 
+     */
+
+    const deleteCharacterById = (id : number) => {
+        const crewClean = crewList.filter(c => c.id !== id);
+        setCrew(crewClean);
+    }
+
     return (
         <ShipContext.Provider value={{
             credit,
@@ -125,7 +136,8 @@ export const ShipContextProvider = ({children}:ShipContextProviderProps) => {
             subtractFuel,
             addFuel,
             crewList,
-            addCharacterToCrewList
+            addCharacterToCrewList,
+            deleteCharacterById
         }}>
             {children}
         </ShipContext.Provider>
