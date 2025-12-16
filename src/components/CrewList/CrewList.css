@@ -16,8 +16,18 @@
   width: fit-content;
   display: grid;
   margin: 1%;
-  padding: 2%;
+  padding: 8px 16px;
+  margin-top: 10px;
+  background-color: #ff4d4d;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px #ff4d4d, 0 0 10px #ff4d4d;
 }
+
 
 .crewList li {
   padding: 5px;
