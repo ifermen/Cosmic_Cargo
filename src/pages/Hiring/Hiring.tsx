@@ -13,7 +13,7 @@ export const Hiring: React.FC = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [search, setSearch] = useState<string>("");
   //Obtiene las acciones del context
-  const { credit, crewList, addCharacterToCrewList } = useShipContext();
+  const { subtractCredit, credit, crewList, addCharacterToCrewList } = useShipContext();
 
   /**
    * useEffect
@@ -32,11 +32,12 @@ export const Hiring: React.FC = () => {
     loadCharacters();
   }, [crewList]);
 
-  const handleAddCharacter = async (id: number) => {
+  const handleAddCharacter = async (id: number,) => {
     try {
       const character = await getCharacterId(id);
       addCharacterToCrewList(character);
       alert("Personaje añadido con éxito");
+      subtractCredit(200);
     } catch (error) {
       console.error("Error en añadir el personaje", error);
     }
