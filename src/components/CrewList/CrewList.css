@@ -11,6 +11,14 @@
   padding: 0;
 }
 
+
+.crewList button{
+  width: fit-content;
+  display: grid;
+  margin: 1%;
+  padding: 2%;
+}
+
 .crewList li {
   padding: 5px;
   width: fit-content;

@@ -10,6 +10,7 @@ interface ShipContextType {
     subtractFuel : (fuelToSubtract:number) => void;
     addFuel : (fuelToAdd:number) => void;
     addCharacterToCrewList : (character:Character) => void;
+    delCharacterToCrewList : (character:Character) => void;
     crewList: Character[];
 }
 const ShipContext = createContext<ShipContextType | null>(null);
@@ -116,6 +117,19 @@ export const ShipContextProvider = ({children}:ShipContextProviderProps) => {
         setCrew([...crewList,character]);
     }
 
+    /**
+     * Elimina un personaje a la lista de tripulación
+     * @param character 
+     * @throws Ya hay 4 personajes añadidos
+     */
+    const delCharacterToCrewList = (character:Character) => {
+        if (crewList.length <= 0){
+            throw new Error("Tripulación completa");
+        }
+        setCrew(crewList.filter(c => c.id !== character.id));
+    }
+
+
     return (
         <ShipContext.Provider value={{
             credit,
@@ -125,7 +139,8 @@ export const ShipContextProvider = ({children}:ShipContextProviderProps) => {
             subtractFuel,
             addFuel,
             crewList,
-            addCharacterToCrewList
+            addCharacterToCrewList,
+            delCharacterToCrewList
         }}>
             {children}
         </ShipContext.Provider>

@@ -1,13 +1,14 @@
 import { CrewList } from '../../components/CrewList/CrewList';
 import {useShipContext} from '../../contexts/ShipContext'
-
+import './Home.css';
 
 export function Home() {
     const {fuel,credit,crewList} = useShipContext();
     return (
         <div>
-            <h1>Resumen visual</h1>
+           
             <div>
+                 <h1>Resumen visual</h1>
                 <div>
                     <p>
                         fuel
@@ -24,15 +25,7 @@ export function Home() {
                         {credit}
                     </p>
                 </div>
-            </div>
-            <div>
-                <p>
-                    Tripulacion
-                </p>
-                <CrewList></CrewList>
 
-                <a href='./Hiring'>Cantina</a>
-            </div>
             {
                 fuel <= 0 ? (
                     <div>
@@ -40,6 +33,12 @@ export function Home() {
                     </div>
                 ):""
             }
+            </div>
+            <div>
+                <CrewList></CrewList>
+
+                <a href='./Hiring'>Cantina</a>
+            </div>
         </div>
     )
 }
