@@ -29,7 +29,7 @@ export function Home() {
             {
                 fuel <= 0 ? (
                     <div>
-                        <h2><strong>Alerta:</strong> NAve a la deriva</h2>
+                        <h2><strong>Alerta:</strong> Nave a la deriva</h2>
                     </div>
                 ):""
             }
@@ -37,7 +37,6 @@ export function Home() {
             <div>
                 <CrewList></CrewList>
 
-                <a href='./Hiring'>Cantina</a>
             </div>
         </div>
     )
