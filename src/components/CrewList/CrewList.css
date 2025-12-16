@@ -1,13 +1,5 @@
-
-
-
 .crewList {
   width: fit-content;
-
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columnas iguales */
-  gap: 10px; /* espacio entre filas y columnas */
-  list-style: none; /* quitar viñetas */
   padding: 0;
 }
 
@@ -33,10 +25,14 @@
 .crewList span{
   width: fit-content;
 }
-.crewList {
+.crewList ul{
   margin: 0 auto;
   padding: 10px;
   margin-left: 100px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas iguales */
+  gap: 10px; /* espacio entre filas y columnas */
+  list-style: none; /* quitar viñetas */
 }
 
 /* Opcional: centrar el título igual que la lista */
@@ -44,7 +40,7 @@
   text-align: center;
   padding: 50px;
   margin: 40px;
-  margin-left: 107px;
+  margin-left: 142px;
 
 }
 .crewList button{
@@ -61,4 +57,19 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 0 5px #ff4d4d, 0 0 10px #ff4d4d;
+}
+.btnDetails{
+  width: fit-content;
+  display: grid;
+  margin: 1%;
+  padding: 8px 16px;
+  margin-top: 10px;
+  background-color: #0051ff;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px #0051ff, 0 0 10px #0051ff;
 }
