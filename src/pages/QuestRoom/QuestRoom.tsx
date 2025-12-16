@@ -142,7 +142,6 @@ export const QuestRoom = () => {
         {loading && <p>⏳ Misión en curso... (3s)</p>}
 
         {/* RESULTADO */}
-        {message && <p style={{ color: "green", whiteSpace: "pre-line" }}>{message}</p>}
         {message && (
           <p className={isError ? "message-error" : "message-success"}> {message}</p>
         )}
