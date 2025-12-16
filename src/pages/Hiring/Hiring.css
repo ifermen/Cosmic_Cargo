@@ -1,32 +1,109 @@
-.hiring{
-    display: flex;
-    justify-content: space-between;
+.hiring {
+  display: flex;
+  justify-content: space-between;
 }
 
-.hiring-crewList{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* ========================= */
+/* LISTA DE RECLUTAMIENTO */
+/* ========================= */
+
+.hiringList {
+  width: 850px;
 }
 
-.hiringList{
-    width: 750px;
-}
-
-.input{
-    padding: 10px;
-    border-radius: 50px;
-    background-color: rgba(0, 255, 255, 0.1);
-    border-color: #00ffff;
-    color: #00ffff;
-    font-family: 'Orbitron', sans-serif;
-}
-
-.hiringList-content{
+.hiringList-content {
   border: 3px solid #00ffff;
-  box-shadow: 0 0 3px#00ffff, 0 0 6px#00ffff;
+  box-shadow: 0 0 3px #00ffff, 0 0 6px #00ffff;
   background-color: rgba(0, 255, 255, 0.1);
   border-radius: 10px;
-  padding: 10px;
+  padding: 20px;
   margin: 0;
+}
+
+/* ========================= */
+/* INPUT BUSCADOR */
+/* ========================= */
+
+.input {
+  padding: 10px;
+  border-radius: 50px;
+  text-align: center;
+  background-color: rgba(0, 255, 255, 0.1);
+  border: 2px solid #00ffff;
+  color: #00ffff;
+  font-family: 'Orbitron', sans-serif;
+  margin: 10px 0 20px 0;
+  width: 25%;
+}
+
+/* ========================= */
+/* TABLA */
+/* ========================= */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+thead th {
+  padding: 12px 10px;
+  border-bottom: 2px solid #00ffff;
+  color: #00ffff;
+  font-weight: bold;
+}
+
+.trCharacters td {
+  padding: 15px 10px;
+  vertical-align: middle;
+}
+
+.trCharacters {
+  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+/* ========================= */
+/* IMÁGENES */
+/* ========================= */
+
+.imageCharacters {
+  width: 70px;
+  border: 3px solid #00ffff;
+  box-shadow: 0 0 3px #00ffff, 0 0 6px #00ffff;
+  border-radius: 10px;
+}
+
+/* ========================= */
+/* BOTONES */
+/* ========================= */
+
+.trCharacters button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 2px solid #00ffff;
+  background-color: rgba(0, 255, 255, 0.15);
+  color: #00ffff;
+  font-family: 'Orbitron', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.trCharacters button:hover:not(:disabled) {
+  background-color: rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 6px #00ffff;
+}
+
+.trCharacters button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ========================= */
+/* LISTA DE TRIPULACIÓN */
+/* ========================= */
+
+.hiring-crewList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
