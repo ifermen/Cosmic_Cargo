@@ -1,0 +1,79 @@
+/* CONTENEDOR */
+.quest-room {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background-color: #0f172a;
+  border-radius: 10px;
+  color: #e5e7eb;
+}
+
+/* TÍTULO */
+.quest-room h1 {
+  margin-bottom: 0.5rem;
+}
+
+/* FORMULARIO */
+.quest-room form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* LABELS */
+.quest-room label {
+  font-weight: bold;
+}
+
+/* SELECTS */
+.quest-room select {
+  width: 100%;
+  min-height: 40px;
+  padding: 0.4rem;
+  background-color: #020617;
+  color: #e5e7eb;
+  border: 1px solid #334155;
+  border-radius: 6px;
+}
+
+.quest-room select:focus {
+  outline: none;
+  border-color: #38bdf8;
+}
+
+/* MULTISELECT */
+.quest-room select[multiple] {
+  min-height: 120px;
+}
+
+/* BOTÓN */
+.quest-room button {
+  padding: 0.6rem;
+  background-color: #38bdf8;
+  color: #020617;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.quest-room button:disabled {
+  background-color: #64748b;
+  cursor: not-allowed;
+}
+
+/* MENSAJES */
+.message-success {
+  color: #22c55e;
+  white-space: pre-line;
+}
+
+.message-error {
+  color: #ef4444;
+  white-space: pre-line;
+}
+
+/* INFO EXTRA */
+.quest-room p {
+  margin: 0.3rem 0;
+}
