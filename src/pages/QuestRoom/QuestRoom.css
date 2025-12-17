@@ -1,16 +1,25 @@
 /* CONTENEDOR */
 .quest-room {
   max-width: 600px;
-  margin: 0 auto;
-  padding: 1.5rem;
-  background-color: #0f172a;
-  border-radius: 10px;
+  margin: 3rem auto;
+  padding: 1.8rem;
+  background: rgba(2, 6, 23, 0.85);
+  border: 1px solid #22d3ee;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
   color: #e5e7eb;
 }
 
 /* TÍTULO */
 .quest-room h1 {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
+  color: #22d3ee;
+  letter-spacing: 1px;
+}
+
+.quest-room > p {
+  margin-bottom: 1.2rem;
+  color: #cbd5f5;
 }
 
 /* FORMULARIO */
@@ -23,13 +32,14 @@
 /* LABELS */
 .quest-room label {
   font-weight: bold;
+  color: #38bdf8;
 }
 
 /* SELECTS */
 .quest-room select {
   width: 100%;
   min-height: 40px;
-  padding: 0.4rem;
+  padding: 0.45rem;
   background-color: #020617;
   color: #e5e7eb;
   border: 1px solid #334155;
@@ -38,7 +48,8 @@
 
 .quest-room select:focus {
   outline: none;
-  border-color: #38bdf8;
+  border-color: #22d3ee;
+  box-shadow: 0 0 6px rgba(34, 211, 238, 0.6);
 }
 
 /* MULTISELECT */
@@ -48,29 +59,48 @@
 
 /* BOTÓN */
 .quest-room button {
-  padding: 0.6rem;
-  background-color: #38bdf8;
-  color: #020617;
+  margin-top: 0.8rem;
+  padding: 0.65rem;
+  background-color: transparent;
+  color: #22d3ee;
   font-weight: bold;
-  border: none;
+  border: 1px solid #22d3ee;
   border-radius: 6px;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quest-room button:hover:not(:disabled) {
+  background-color: #22d3ee;
+  color: #020617;
 }
 
 .quest-room button:disabled {
-  background-color: #64748b;
+  border-color: #64748b;
+  color: #64748b;
   cursor: not-allowed;
 }
 
 /* MENSAJES */
+.message-success,
+.message-error {
+  margin-top: 1rem;
+  padding: 0.6rem;
+  border-radius: 6px;
+  white-space: pre-line;
+  text-align: center;
+}
+
 .message-success {
   color: #22c55e;
-  white-space: pre-line;
+  border: 1px solid #22c55e;
+  background-color: rgba(34, 197, 94, 0.1);
 }
 
 .message-error {
   color: #ef4444;
-  white-space: pre-line;
+  border: 1px solid #ef4444;
+  background-color: rgba(239, 68, 68, 0.1);
 }
 
 /* INFO EXTRA */

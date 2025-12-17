@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useShipContext } from "../../contexts/ShipContext";
+import "./CrewDetail.css";
 
 export function CrewDetail(){
     const {id} = useParams();
@@ -16,7 +17,7 @@ export function CrewDetail(){
 
     return(
         <>
-            <div>
+            <div className="crew-detail">
                 <h2>{character.name}</h2>
                 <img src={character.image} alt={"Imagen de " + character.name} />
                 <p><strong>Especie:</strong> {character.species}</p>
