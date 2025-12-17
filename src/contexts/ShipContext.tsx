@@ -118,7 +118,7 @@ export const ShipContextProvider = ({children}:ShipContextProviderProps) => {
     }
 
     /**
-     * 
+     * Quita al miembro de la tripulación con ese id
      * @param id 
      */
 
