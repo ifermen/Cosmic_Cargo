@@ -15,9 +15,7 @@ export const QuestRoom = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
-  // -----------------------------------------
   // 1. Cargar planetas
-  // -----------------------------------------
   useEffect(() => {
     const loadPlanets = async () => {
       try {
@@ -31,9 +29,7 @@ export const QuestRoom = () => {
     loadPlanets();
   }, []);
 
-  // -----------------------------------------
   // 2. Enviar misión
-  // -----------------------------------------
   const handleMission = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -63,24 +59,24 @@ export const QuestRoom = () => {
 
     // Simular misión (3s)
     setTimeout(() => {
-        addCredit(reward);
+      addCredit(reward);
 
-        const planetName = planets.find(
-            (p) => p.name === selectedPlanet
-        )?.name;
+      const planetName = planets.find(
+        (p) => p.name === selectedPlanet
+      )?.name;
 
-        setLoading(false);
-        setIsError(false);
-        setMessage(
-            `Misión cumplida en ${planetName}
-                Tripulantes enviados: ${selectedCrew.length}
-                Gasolina gastada: ${fuelCost}
-                Créditos ganados: +${reward}`
-        );
+      setLoading(false);
+      setIsError(false);
+      setMessage(
+        `Misión cumplida en: ${planetName}
+          Tripulantes enviados: ${selectedCrew.length}
+          Gasolina gastada: ${fuelCost}
+          Créditos ganados: +${reward}`
+      );
 
-        // Reset selección
-        setSelectedCrew([]);
-        setSelectedPlanet("");
+      // Reset selección
+      setSelectedCrew([]);
+      setSelectedPlanet("");
     }, 3000);
   };
 
@@ -103,9 +99,9 @@ export const QuestRoom = () => {
                 }}
             >
                 {crewList.map((member: Character) => (
-                <option key={member.id} value={member.id}>
-                    {member.name} ({member.status})
-                </option>
+                  <option key={member.id} value={member.id}>
+                      {member.name} ({member.status})
+                  </option>
                 ))}
             </select>
             </label>
