@@ -1,6 +1,6 @@
-# **⚠️ ES OBLIGATORIO COMENTAR EL CODIGO ⚠️**
-
-# Modelos
+# Documentación del Proyecto
+## Modelos
+Character
 ```ts
 export interface Character {
     id:       number;
@@ -17,7 +17,7 @@ export interface Character {
     created:  Date;
 }
 ```
-
+Location
 ```ts
 export interface Location {
     name: string;
@@ -25,59 +25,74 @@ export interface Location {
 }
 ```
 
-# Estructura de carptas
+## Estructura de carpetas
 ```
 src/
-├── assets/
-├── components/
-├── contexts/
-├── hooks/
-├── layouts/
-├── pages/
-├── services/
-└── types/
+├── assets/ Recursos multimedia
+├── components/ Componentes aparte utilizados
+├── contexts/ Donde se ubica el ShipContext (combustible, créditos y lista de tripulantes)
+├── layouts/ Componentes que definen la estructura visual común a todas las pantallas (header, footer, etc)
+├── pages/ Donde se ubican las diferentes vistas
+├── services/ Carpeta donde se encuentra la capa negocio de los recursos utilizados
+└── types/ Donde se encuentran las interfaces que sirven como modelos
 ```
 
-# React Router -> Iván / Luis
-- Bloquear la navegación en caso de que no haya combustible
+## React Router -> Luis
+El proyecto tiene la librería **react-router-dom** implementada y se han configurado 4 rutas:
+- Home (Vista 1)
+- Hiring (Vista 2)
+- QuestRoom (Vista 3)
+- Crew/{id} (Vista detalle de tripulación)
 
-# Layout -> Iván / Luis
-- Cabecera donde estará el menú de navegación (React Router)
-- Main donde se cargará las vistas
-- Footer que dirá: Creado por los Marcianitos (Iván, Abel, Paco, Luis, José María).
+## Layout -> Iván y Luis
+Se ha desarrollado una estructura visual común a todas las páginas. En la parte superior se encuentra una cabecera (header) y el la inferior un pie (footer) y en medio se encuentra el contenido principal (main) que es donde se renderiza todas las vistas.
 
-# Contexto -> Iván / Luis
-- Objeto {credito=1000,combustible=100,tripulacio:lista[4]}
+Dentro del hearder se encuentra el menú de navegación (nav) que utilizando la librería de **react-router-dom** se establecen los links a **Información de la Nave** (home), **Cantina** (Hiring) y **Sala de Misiones** (QuestRoom). Si el combustible es menor que 15% el menú se deshabilita.
 
-# Vista 1 | Home ->  Abel
-- Resumen (credito y combustible consumido(NO ACTUAL))
-- Lista de tripulacion / mensaje informativo y enlace a zona de contratacion
-- Si el combustible llega ha cero se debe de mostrar un mensaje: NAVE A LA DERIVA
+## Contexto -> Iván
+En el contexto guardamos la siguiente información:
+- Combustible (un porcentaje que por defecto está a 100%)
+- Créditos (por defecto 1000)
+- Lista de tripulantes (lista de objetos de tipo Character cuyo máximo es 4)
 
-# Vista 2 | Hiring (Conexión a API) -> Paco
-- Llamadas a la Api (https://rickandmortyapi.com/api/character) **useEffect**
-- Interfaz de character (**./model**)
-- Input para buscar candidatos
-  - Mostrar una tabla de candidatos (cabecera: name, species, status, gender, action (donde estará el boton de contratar)).
-  - Botón "Contratar": Al hacer click, cuesta 200 créditos (solo  si tienes menos de 4 tripulantes en el contexto,  si tienes dinero suficiente y si no está muerto).
-  - Status 'Dead':  si el personaje esta muerto debe aparecer el botón deshabilitado y la tarjeta en gris (Renderizado condicional basado en datos de API).
+En el contexto también hay implementado un **hook** para permitirnos utilizar el contexto con mayor facilidad (nos aseguramos de que el contexto no sea nunca null).
 
-# Vista 3 | Quest Room -> Chumari
-- Formulario:
-  - Input select para elegir al tripulante elegido (del context). 
-  - Input select con 5 planetas harcodeados (en un futuro seran de la api).
-  - Boton submit con el texto Start Mission.
-- Evento Submit:
-  - Restamos combustible al almacenado en el contexto (Aleatorio 5 - 50%).
-  - Crear temporizador (**setTimeout**) al enviar el formulario (**evento submit**).
-  - Sumar creditos (aleatorio) al total del contexto.
+En el provider se encuentran los estados de los valores anteriores así como una serie de funciones para manipularlos.
 
-# Opcional
+## Vista 1 | Home ->  Abel
+En esta vista hay un resumen visual de la información del contexto (combustible y créditos).
 
-## LocalStorage
-  Contexto también se guardará en LocalStorage.
+Si el combustible llegara a 0 se informaría de lo ocurrido. Además también se ha desarrollado un botón que nos permite recargar el combustible (maximo 50% de una sola vez) y restando 1 crédito por cada 1% de combustible rellenado.
 
-## ¿HOOK?
+También hay un listado de la tripulación.
 
-## ¿Detalle del tripulante?
- 
+## Vista 2 | Hiring -> Paco
+Esta vista está dedicada ha reclutar personajes para nuestra tripulación. Al cargar la pagina (**useEffect**) llama a la api de **rickandmortyapi** con la url https://rickandmortyapi.com/api/character que nos devuelve un listado de todos los personajes.
+
+Cada personaje cuesta 200 créditos reclutarlo y si está muerto no nos permitirá reclutarlo, tampoco si no tenemos suficientes créditos.
+
+En el listado de personajes se encuentra un input text para filtrar por sus nombres.
+
+También hay un listado de la tripulación.
+
+## Vista 3 | Quest Room -> José María
+La vista de Sala de Misiones tiene un formulario donde se pueden seleccionar 1 o varios tripulates y a que planeta deben hacer la misión.
+
+Las misiones duran 3 segundos y una vez finalizadas te consumen un porcentaje de combustible aleatorio y añaden una recompensa en créditos también aleatoria.
+
+Si no hay combustible suficiente la misión no iniciará.
+
+## Listado de tripulantes -> Iván
+Es un componente aparte que se utiliza tanto en la **Cantina** como en la **Información de la Nave**.
+
+En ella se muertra todos los tripulates con 2 botones cada uno:
+- Ver detalles, nos permite viajar a la vista de detalles (crew/{id}).
+- Eliminar, nos permite despedir al tripulante.
+
+## Vista detalles de tripulación -> Luis
+La vista consiste en mostrar la información del tripulante en base al id introducido por la url (useParam).
+
+También hay un botón para volver a la página anterior (useNavigate).
+
+## LocalStorage -> Luis
+Se ha implementado un servicio para manejar el LocalStorage. Y en el contexto se ha implementado 2 **useEffect**, una para cargar la información del LocalStorage y otro para guardarla. Se utilizó un estado como bandera que evitó la corrupción de información en el LocalStorage.
