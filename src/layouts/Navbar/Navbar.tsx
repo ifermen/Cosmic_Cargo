@@ -9,13 +9,13 @@ export default function Navbar() {
       <nav>
         <ul>
           <li>
-            <Link to="Home">Home</Link>
+            <Link to="Home">Información de la nave</Link>
           </li>
           <li>
-            <Link to="Hiring">Hiring</Link>
+            <Link to="Hiring">Cantina</Link>
           </li>
           <li>
-            <Link to="QuestRoom">QuestRoom</Link>
+            <Link to="QuestRoom">Sala de misiones</Link>
           </li>
         </ul>
       </nav>
@@ -24,9 +24,9 @@ export default function Navbar() {
     return (
       <nav>
         <ul>
-          <li className="disabled">Home</li>
-          <li className="disabled">Hiring</li>
-          <li className="disabled">QuestRoom</li>
+          <li className="disabled">Información de la nave</li>
+          <li className="disabled">Cantina</li>
+          <li className="disabled">Sala de misiones</li>
         </ul>
       </nav>
     );

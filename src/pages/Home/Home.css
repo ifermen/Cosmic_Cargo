@@ -212,11 +212,20 @@
 
 /* Contenedor lista de tripulación */
 .home-crewList {
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .home .crewList ul{
   display: flex;
+  justify-content: center;
+}
+
+.emptyCrew{
+  padding: 20px;
+  font-size: 2em;
 }
 
 /* Botón-cantina tipo portal */

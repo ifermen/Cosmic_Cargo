@@ -3,7 +3,7 @@ import { useShipContext } from "../../contexts/ShipContext";
 import "./Home.css";
 
 export function Home() {
-  const { fuel, credit,subtractCredit,addFuel } = useShipContext();
+  const { fuel, credit,subtractCredit,addFuel,crewList } = useShipContext();
 
   const handleClickReloadFuel = () => {
     if(fuel < 100){
@@ -55,7 +55,11 @@ export function Home() {
 
       <article className="homeCrew">
         <div className="home-crewList">
-          <CrewList />
+          {crewList.length <= 0 ? (
+            <p className="emptyCrew">Tripulación vacía, ir a la cantina para contratar</p>
+          ):(
+            <CrewList />
+          )}
         </div>
 
         <a href="./Hiring" className="home__cantina-link">

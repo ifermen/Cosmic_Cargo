@@ -30,8 +30,8 @@ export const QuestRoom = () => {
   }, []);
 
   // 2. Enviar misión
-  const handleMission = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleMission = (e?: React.FormEvent<HTMLFormElement>) => {
+    e?.preventDefault();
 
     // Validaciones
     if (selectedCrew.length === 0 || selectedPlanet === "") {
@@ -61,17 +61,15 @@ export const QuestRoom = () => {
     setTimeout(() => {
       addCredit(reward);
 
-      const planetName = planets.find(
-        (p) => p.name === selectedPlanet
-      )?.name;
+      const planetName = planets.find((p) => p.name === selectedPlanet)?.name;
 
       setLoading(false);
       setIsError(false);
       setMessage(
         `Misión cumplida en: ${planetName}
-          Tripulantes enviados: ${selectedCrew.length}
-          Gasolina gastada: ${fuelCost}
-          Créditos ganados: +${reward}`
+              Tripulantes enviados: ${selectedCrew.length}
+              Gasolina gastada: ${fuelCost}
+              Créditos ganados: +${reward}`
       );
 
       // Reset selección
@@ -80,71 +78,81 @@ export const QuestRoom = () => {
     }, 3000);
   };
 
-    return (
-        <div className="quest-room">
-        <h1>Sala de Misiones</h1>
-        <p>Envía a tu tripulación a explorar.</p>
+  return (
+    <div className="quest-room">
+      <h1>Sala de Misiones</h1>
+      <p>Envía a tu tripulación a explorar.</p>
 
-        {/* FORMULARIO */}
-        <form onSubmit={handleMission}>
-            {/* SELECT TRIPULANTES */}
-            <label>
-            <strong>Selecciona tripulantes:</strong>
-            <br />
-            <select multiple value={selectedCrew.map(String)} onChange={(e) => {
-                const values = Array.from(e.target.selectedOptions).map(
-                    (option) => Number(option.value)
-                );
-                setSelectedCrew(values);
-                }}
-            >
-                {crewList.map((member: Character) => (
-                  <option key={member.id} value={member.id}>
-                      {member.name} ({member.status})
-                  </option>
-                ))}
-            </select>
-            </label>
+      {/* FORMULARIO */}
+      <form onSubmit={handleMission}>
+        {/* SELECT TRIPULANTES */}
+        <label>
+          <strong>Selecciona tripulantes:</strong>
+          <br />
+          <select
+            multiple
+            value={selectedCrew.map(String)}
+            onChange={(e) => {
+              const values = Array.from(e.target.selectedOptions).map(
+                (option) => Number(option.value)
+              );
+              setSelectedCrew(values);
+            }}
+          >
+            {crewList.map((member: Character) => (
+              <option key={member.id} value={member.id}>
+                {member.name} ({member.status})
+              </option>
+            ))}
+          </select>
+        </label>
 
-            <p>Seleccionados: {selectedCrew.length}</p>
-
-            <br />
-
-            {/* SELECT PLANETA */}
-            <label>
-            <strong>Selecciona planeta destino:</strong>
-            <br />
-            <select value={selectedPlanet} onChange={(e) => setSelectedPlanet(e.target.value)}>
-                <option value="">Elegir Planeta</option>
-                {planets.map((loc) => (
-                <option key={loc.url} value={loc.name}>
-                    {loc.name}
-                </option>
-                ))}
-            </select>
-            </label>
-
-            <br /><br />
-
-            {/* BOTÓN */}
-            <button type="submit" disabled={loading}>
-            {loading ? "Iniciando misión..." : "Start Mission"}
-            </button>
-        </form>
+        <p>Seleccionados: {selectedCrew.length}</p>
 
         <br />
 
-        {/* LOADING */}
-        {loading && <p>⏳ Misión en curso... (3s)</p>}
+        {/* SELECT PLANETA */}
+        <label>
+          <strong>Selecciona planeta destino:</strong>
+          <br />
+          <select
+            value={selectedPlanet}
+            onChange={(e) => setSelectedPlanet(e.target.value)}
+          >
+            <option value="">Elegir Planeta</option>
+            {planets.map((loc) => (
+              <option key={loc.url} value={loc.name}>
+                {loc.name}
+              </option>
+            ))}
+          </select>
+        </label>
 
-        {/* RESULTADO */}
-        {message && (
-          <p className={isError ? "message-error" : "message-success"}> {message}</p>
-        )}
+        <br />
+        <br />
 
-        <p>Tripulación actual: {crewList.length}</p>
-        </div>
-    );
+        {/* BOTÓN */}
+        <button type="submit" disabled={loading}>
+          {loading ? "Iniciando misión..." : "Start Mission"}
+        </button>
+      </form>
+
+      <br />
+
+      {/* LOADING */}
+      {loading && <p>⏳ Misión en curso...</p>}
+
+      {/* RESULTADO */}
+      {message && (
+        <p className={isError ? "message-error" : "message-success"}>
+          {" "}
+          {message}
+        </p>
+      )}
+
+      <p>Tripulación actual: {crewList.length}</p>
+    </div>
+  );
 };
 
 export default QuestRoom;
