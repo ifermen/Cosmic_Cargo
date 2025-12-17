@@ -1,6 +1,33 @@
 .hiring {
   display: flex;
   justify-content: space-between;
+  gap: 24px;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.hiring > article {
+  flex: 1;
+  min-width: 0; /* MUY importante para evitar overflow */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ======================= */
+/* Lista de la tripulación */
+/* ======================= */
+
+.hiring-crewList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* ========================= */
@@ -8,8 +35,21 @@
 /* ========================= */
 
 .hiringList {
-  width: 850px;
+  width: 100%;
+  max-width: 850px;
+  gap: 0;
+  box-sizing: border-box;
 }
+
+.hiring .title{
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box; /* Incluye padding y border en el ancho */
+  overflow-wrap: break-word; /* Rompe palabras largas si es necesario */
+  word-wrap: break-word; /* Compatibilidad con navegadores antiguos */
+  hyphens: auto; /* Añade guiones en palabras largas (opcional) */
+}
+
 
 .hiringList-content {
   border: 3px solid #00ffff;
@@ -18,6 +58,7 @@
   border-radius: 10px;
   padding: 20px;
   margin: 0;
+  box-sizing: border-box;
 }
 
 /* ========================= */
@@ -34,6 +75,9 @@
   font-family: 'Orbitron', sans-serif;
   margin: 10px 0 20px 0;
   width: 25%;
+  min-width: 150px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* ========================= */
@@ -44,6 +88,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   text-align: center;
+  box-sizing: border-box;
 }
 
 thead th {
@@ -68,9 +113,12 @@ thead th {
 
 .imageCharacters {
   width: 70px;
+  max-width: 100%;
+  height: auto;
   border: 3px solid #00ffff;
   box-shadow: 0 0 3px #00ffff, 0 0 6px #00ffff;
   border-radius: 10px;
+  display: block;
 }
 
 /* ========================= */
@@ -98,12 +146,93 @@ thead th {
   cursor: not-allowed;
 }
 
-/* ========================= */
-/* LISTA DE TRIPULACIÓN */
-/* ========================= */
+/* ========== */
+/* RESPONSIVE */
+/* ========== */
 
-.hiring-crewList {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Tablets y pantallas medianas */
+@media (max-width: 1465px) {
+  .hiring {
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .hiring > article {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .hiring-crewList {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .hiring .crewList {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .hiring .crewList ul {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .hiring .crewList img {
+    width: 220px;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .hiringList {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .input {
+    width: 50%;
+    min-width: 200px;
+  }
+  
+  .hiringList-content {
+    overflow-x: auto;
+  }
+  
+  table {
+    min-width: 600px;
+  }
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+  .hiring .crewList img {
+    width: 180px;
+  }
+  
+  .input {
+    width: 100%;
+  }
+  
+  .hiringList-content {
+    padding: 15px;
+  }
+  
+  .trCharacters td {
+    padding: 10px 5px;
+    font-size: 14px;
+  }
+  
+  .trCharacters button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
 }

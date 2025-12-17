@@ -28,7 +28,6 @@
 .crewList ul{
   margin: 0 auto;
   padding: 10px;
-  margin-left: 100px;
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2 columnas iguales */
   gap: 10px; /* espacio entre filas y columnas */
@@ -40,7 +39,6 @@
   text-align: center;
   padding: 50px;
   margin: 40px;
-  margin-left: 142px;
 
 }
 .crewList button{
