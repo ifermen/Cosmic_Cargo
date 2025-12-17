@@ -19,3 +19,7 @@ nav li a:hover{
     transition: 100ms;
     color: #009999;
 }
+
+nav li.disabled{
+    color: #009999;
+}

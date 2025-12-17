@@ -66,6 +66,13 @@
   backdrop-filter: blur(12px);
   overflow: hidden;
   width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.home__card h3{
+  margin:0;
+  font-size: 2em;
 }
 
 /* Esquinas tipo HUD */
@@ -162,8 +169,33 @@
     0 0 6px rgba(255, 255, 255, 0.7),
     0 0 18px rgba(255, 69, 96, 0.8);
 }
+
+.btnReload{
+  border: 1px solid #00ffff;
+  border-radius: 20px;
+  font-size: 1em;
+  background-color: rgba(0, 0, 0, 0);
+  color: #00ffff;
+  padding: 10px;
+  box-shadow:
+    0 0 3px#00ffff,
+    0 0 6px#00ffff;
+  background-color: rgba(0, 255, 255, 0.10);
+  cursor:pointer;
+}
+
+.btnReload:disabled{
+  color: #009999;
+  border: 1px solid #00cccc;
+}
+
+.btnReload:hover{
+  color: #009999;
+  border: 1px solid #00cccc;
+}
+
 /*=============================================================*/
-/* Zona inferior: crew + cantina */
+/* Crew + cantina */
 .homeCrew {
   display: flex;
   flex-direction: column;
