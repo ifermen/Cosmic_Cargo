@@ -67,12 +67,6 @@ export const Hiring: React.FC = () => {
       <article className="hiringList">
         <h2 className="title">Reclutar Personajes</h2>
 
-        {filteredCharacters.length === 0 ? (
-          <h2>"No hay personajes para reclutar"</h2>
-        ) : (
-          ""
-        )}
-
         <div className="hiringList-content">
           <input
             className="input"
@@ -81,68 +75,71 @@ export const Hiring: React.FC = () => {
             value={search}
             onChange={handleSearch}
           />
+          {filteredCharacters.length === 0 ? (
+            <h2>No hay personajes para reclutar</h2>
+          ) : (
+            <table>
+              <thead>
+                <tr className="trTitlesTable">
+                  <th></th>
+                  <th>Nombre</th>
+                  <th>Especie</th>
+                  <th>Estado Vital</th>
+                  <th>Género</th>
+                  <th>Acción</th>
+                </tr>
+              </thead>
 
-          <table>
-            <thead>
-              <tr className="trTitlesTable">
-                <th></th>
-                <th>Nombre</th>
-                <th>Especie</th>
-                <th>Estado Vital</th>
-                <th>Género</th>
-                <th>Acción</th>
-              </tr>
-            </thead>
+              <tbody>
+                {filteredCharacters.map((character) => {
+                  // No se puede contratar a ningún personaje que cumpla alguno de estos requisitos
+                  const isDead: boolean = character.status === "Dead";
+                  const noCredits: boolean = credit < 200;
+                  const crewFull: boolean = crewList.length >= 4;
+                  const crewCharacterPut: boolean = crewList.some(
+                    (crewCharacter) => {
+                      return crewCharacter.id == character.id;
+                    }
+                  );
 
-            <tbody>
-              {filteredCharacters.map((character) => {
-                // No se puede contratar a ningún personaje que cumpla alguno de estos requisitos
-                const isDead: boolean = character.status === "Dead";
-                const noCredits: boolean = credit < 200;
-                const crewFull: boolean = crewList.length >= 4;
-                const crewCharacterPut: boolean = crewList.some(
-                  (crewCharacter) => {
-                    return crewCharacter.id == character.id;
-                  }
-                );
-
-                return (
-                  <tr key={character.id} className="trCharacters">
-                    <td>
-                      <img
-                        src={character.image}
-                        alt="Imagen de cada personaje"
-                        className="imageCharacters"
-                      ></img>
-                    </td>
-                    <td>{character.name}</td>
-                    <td>{character.species}</td>
-                    <td>{character.status}</td>
-                    <td>{character.gender}</td>
-                    <td>
-                      {/* Botón de Reclutar */}
-                      <button
-                        disabled={
-                          isDead || noCredits || crewFull || crewCharacterPut
-                        }
-                        onClick={() => handleAddCharacter(character.id)}
-                      >
-                        {isDead
-                          ? "No disponible"
-                          : crewFull
-                          ? "Equipo lleno"
-                          : crewCharacterPut
-                          ? "Personaje añadido"
-                          : noCredits
-                          ? "No créditos"
-                          : "Reclutar"}
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+                  return (
+                    <tr key={character.id} className="trCharacters">
+                      <td>
+                        <img
+                          src={character.image}
+                          alt="Imagen de cada personaje"
+                          className="imageCharacters"
+                        ></img>
+                      </td>
+                      <td>{character.name}</td>
+                      <td>{character.species}</td>
+                      <td>{character.status}</td>
+                      <td>{character.gender}</td>
+                      <td>
+                        {/* Botón de Reclutar */}
+                        <button
+                          disabled={
+                            isDead || noCredits || crewFull || crewCharacterPut
+                          }
+                          onClick={() => handleAddCharacter(character.id)}
+                        >
+                          {isDead
+                            ? "No disponible"
+                            : crewFull
+                            ? "Equipo lleno"
+                            : crewCharacterPut
+                            ? "Personaje añadido"
+                            : noCredits
+                            ? "No créditos"
+                            : "Reclutar"}
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          )}
         </div>
       </article>
     </section>

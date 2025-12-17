@@ -17,7 +17,7 @@ export function CrewList() {
               <img src={character.image} alt={"Imagen de " + character.name} />
               <span>{character.name}</span>
               <Link to={"/crew/" + character.id} className="btnDetails">Ver detalles</Link>
-              <button onClick={() => handleDelete(character.id)}>Eliminar</button>
+              <button className="btnDelete" onClick={() => handleDelete(character.id)}>Eliminar</button>
             </li>
           ))}
         </ul>
