@@ -13,7 +13,8 @@ export const Hiring: React.FC = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [search, setSearch] = useState<string>("");
   //Obtiene las acciones del context
-  const { subtractCredit, credit, crewList, addCharacterToCrewList } = useShipContext();
+  const { subtractCredit, credit, crewList, addCharacterToCrewList } =
+    useShipContext();
 
   /**
    * useEffect
@@ -32,7 +33,7 @@ export const Hiring: React.FC = () => {
     loadCharacters();
   }, [crewList]);
 
-  const handleAddCharacter = async (id: number,) => {
+  const handleAddCharacter = async (id: number) => {
     try {
       const character = await getCharacterId(id);
       addCharacterToCrewList(character);
@@ -66,11 +67,11 @@ export const Hiring: React.FC = () => {
       <article className="hiringList">
         <h2 className="title">Reclutar Personajes</h2>
 
-        <h2>
-          {filteredCharacters.length === 0
-            ? "No hay personajes para reclutar"
-            : ""}
-        </h2>
+        {filteredCharacters.length === 0 ? (
+          <h2>"No hay personajes para reclutar"</h2>
+        ) : (
+          ""
+        )}
 
         <div className="hiringList-content">
           <input
