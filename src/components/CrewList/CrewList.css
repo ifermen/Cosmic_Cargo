@@ -1,0 +1,95 @@
+.crewList {
+  width: fit-content;
+  padding: 0;
+}
+
+.crewList li {
+  padding: 5px;
+  margin: 10px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border: 3px solid #00ffff;
+  box-shadow: 0 0 3px#00ffff, 0 0 6px#00ffff;
+  background-color: rgba(0, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.crewList img{
+  border-radius: 5px;
+  width: 250px;
+}
+
+.crewList span{
+  width: fit-content;
+}
+.crewList ul{
+  margin: 0 auto;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas iguales */
+  gap: 10px; /* espacio entre filas y columnas */
+  list-style: none; /* quitar viñetas */
+}
+
+/* Opcional: centrar el título igual que la lista */
+.title {
+  text-align: center;
+  padding: 50px;
+  margin: 40px;
+
+}
+
+.btnDetails{
+  border: 1px solid #00ffff;
+  border-radius: 20px;
+  font-size: 1em;
+  background-color: rgba(0, 0, 0, 0);
+  color: #00ffff;
+  padding: 10px;
+  box-shadow:
+    0 0 3px#00ffff,
+    0 0 6px#00ffff;
+  background-color: rgba(0, 255, 255, 0.10);
+  cursor:pointer;
+  text-decoration: none;
+}
+
+.btnDetails:disabled{
+  color: #009999;
+  border: 1px solid #00cccc;
+}
+
+.btnDetails:hover{
+  color: #009999;
+  border: 1px solid #00cccc;
+}
+
+.btnDelete{
+  border: 1px solid #ff0000;
+  border-radius: 20px;
+  font-size: 1em;
+  background-color: rgba(0, 0, 0, 0);
+  color: #ff0000;
+  padding: 10px;
+  box-shadow:
+    0 0 3px#ff0000,
+    0 0 6px#ff0000;
+  background-color: rgba(255, 0, 0, 0.10);
+  cursor:pointer;
+  text-decoration: none;
+  font-family: 'Orbitron', sans-serif;;
+}
+
+.btnDelete:disabled{
+  color: #990000;
+  border: 1px solid #990000;
+}
+
+.btnDelete:hover{
+  color: #990000;
+  border: 1px solid #990000;
+}

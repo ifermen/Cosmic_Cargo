@@ -1,0 +1,303 @@
+/* Fondo general tipo espacio */
+.home {
+    height: 100%;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.shipInfo{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+/* Título principal con glow */
+.shipInfoTitle {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: #e6e9ff;
+  text-shadow:
+    0 0 8px rgba(138, 43, 226, 0.7),
+    0 0 22px rgba(72, 209, 204, 0.8);
+}
+
+.shipInfoContent{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+/* Contenedor de tarjetas */
+.home__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.8rem;
+  margin-bottom: 2.5rem;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* Tarjetas tipo panel de nave */
+.home__card {
+  padding: 1.5rem 1.6rem;
+  border-radius: 18px;
+  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.06), transparent 55%),
+              radial-gradient(circle at bottom right, rgba(0, 0, 0, 0.8), #050816);
+  border: 1px solid rgba(148, 0, 211, 0.7);
+  box-shadow:
+    0 0 12px rgba(148, 0, 211, 0.8),
+    0 0 32px rgba(0, 206, 209, 0.45),
+    inset 0 0 14px rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.home__card h3{
+  margin:0;
+  font-size: 2em;
+}
+
+/* Esquinas tipo HUD */
+.home__card::before,
+.home__card::after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(0, 255, 204, 0.7);
+  width: 26px;
+  height: 26px;
+  opacity: 0.75;
+}
+
+.home__card::before {
+  top: 10px;
+  left: 10px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.home__card::after {
+  bottom: 10px;
+  right: 10px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Variaciones temáticas */
+.home__card--fuel {
+  border-color: rgba(0, 191, 255, 0.8);
+  box-shadow:
+    0 0 14px rgba(0, 191, 255, 0.8),
+    0 0 40px rgba(0, 0, 0, 0.9);
+}
+
+.home__card--credits {
+  border-color: rgba(50, 205, 50, 0.85);
+  box-shadow:
+    0 0 14px rgba(50, 205, 50, 0.8),
+    0 0 40px rgba(0, 0, 0, 0.9);
+}
+
+/* Título de cada tarjeta */
+.home__card-title {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  margin-bottom: 0.9rem;
+  color: #cfd3ff;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Valor grande centrado */
+.home__value {
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-align: center;
+  color: #f1f5ff;
+  text-shadow:
+    0 0 10px rgba(0, 255, 204, 0.9),
+    0 0 25px rgba(0, 191, 255, 0.7);
+}
+
+/* Estado crítico de combustible */
+.home__status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-top: 8px;
+  border: 1px solid;
+  animation: home-pulse 1.2s ease-in-out infinite;
+}
+
+.home__status--danger {
+  border-color: rgba(255, 69, 96, 0.9);
+  color: #ffe8f0;
+  background: radial-gradient(circle at 20% 0%, rgba(255, 69, 96, 0.35), transparent 55%),
+              rgba(80, 0, 10, 0.85);
+  box-shadow:
+    0 0 10px rgba(255, 69, 96, 0.9),
+    0 0 32px rgba(255, 0, 0, 0.6);
+}
+
+.home__status-label {
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.7),
+    0 0 18px rgba(255, 69, 96, 0.8);
+}
+
+.btnReload{
+  border: 1px solid #00ffff;
+  border-radius: 20px;
+  font-size: 1em;
+  background-color: rgba(0, 0, 0, 0);
+  color: #00ffff;
+  padding: 10px;
+  box-shadow:
+    0 0 3px#00ffff,
+    0 0 6px#00ffff;
+  background-color: rgba(0, 255, 255, 0.10);
+  cursor:pointer;
+}
+
+.btnReload:disabled{
+  color: #009999;
+  border: 1px solid #00cccc;
+}
+
+.btnReload:hover{
+  color: #009999;
+  border: 1px solid #00cccc;
+}
+
+/*=============================================================*/
+/* Crew + cantina */
+.homeCrew {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  box-sizing: border-box;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(29, 35, 68, 0.9), rgba(8, 10, 26, 0.95));
+  border: 1px solid rgba(72, 61, 139, 0.9);
+  box-shadow:
+    0 0 16px rgba(72, 61, 139, 0.85),
+    0 0 36px rgba(0, 0, 0, 0.9);
+}
+
+/* Contenedor lista de tripulación */
+.home-crewList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home .crewList ul{
+  display: flex;
+  justify-content: center;
+}
+
+.emptyCrew{
+  padding: 20px;
+  font-size: 2em;
+}
+
+/* Botón-cantina tipo portal */
+.home__cantina-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  padding: 0.9rem 1.8rem;
+  border-radius: 999px;
+  border: 2px solid rgba(0, 255, 204, 0.9);
+  color: #eaffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.85rem;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(0, 255, 204, 0.35), transparent 55%),
+    radial-gradient(circle at 90% 100%, rgba(0, 191, 255, 0.35), transparent 55%),
+    rgba(0, 8, 20, 0.95);
+  box-shadow:
+    0 0 12px rgba(0, 255, 204, 0.95),
+    0 0 32px rgba(0, 191, 255, 0.9);
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.18s ease-out,
+    box-shadow 0.18s ease-out,
+    border-color 0.18s ease-out,
+    background 0.18s ease-out;
+  margin: 10px;
+}
+
+/* Glow animado borde botón */
+.home__cantina-link::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  border: 1px solid rgba(0, 255, 204, 0.9);
+  opacity: 0.4;
+  filter: blur(5px);
+}
+
+/* Efecto hover */
+.home__cantina-link:hover {
+  transform: translateY(-2px) scale(1.03);
+  border-color: rgba(173, 255, 47, 0.95);
+  box-shadow:
+    0 0 16px rgba(173, 255, 47, 0.9),
+    0 0 40px rgba(0, 0, 0, 1);
+  background:
+    radial-gradient(circle at 15% 0%, rgba(173, 255, 47, 0.3), transparent 55%),
+    radial-gradient(circle at 85% 100%, rgba(0, 191, 255, 0.4), transparent 55%),
+    rgba(1, 11, 30, 0.98);
+}
+
+/* Responsive */
+@media (max-width: 1585px) {
+  .home{
+    flex-direction: column;
+  }
+  .shipInfo{
+
+  }
+  .shipInfoContent{
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 1255px){
+  .home .crewList ul{
+    display: grid;
+  }
+}

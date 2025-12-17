@@ -1,0 +1,55 @@
+.crew-detail {
+  max-width: 500px;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  background: rgba(2, 6, 23, 0.85);
+  border: 1px solid #00ffff;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(00, 255, 255, 0.3);
+  color: #e5e7eb;
+  text-align: center;
+}
+
+/* NOMBRE */
+.crew-detail h2 {
+  margin-bottom: 1rem;
+  color: #00ffff;
+  letter-spacing: 1px;
+}
+
+/* IMAGEN */
+.crew-detail img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid #00ffff;
+  margin-bottom: 1rem;
+}
+
+/* INFO */
+.crew-detail p {
+  margin: 0.4rem 0;
+  font-size: 0.95rem;
+}
+
+.crew-detail strong {
+  color: #00ffff;
+}
+
+/* BOTÓN */
+.crew-detail button {
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  background-color: transparent;
+  border: 1px solid #00ffff;
+  color: #00ffff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.crew-detail button:hover {
+  background-color: #00ffff;
+  color: #020617;
+}

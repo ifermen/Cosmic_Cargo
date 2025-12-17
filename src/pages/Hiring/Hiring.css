@@ -1,0 +1,238 @@
+.hiring {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.hiring > article {
+  flex: 1;
+  min-width: 0; /* MUY importante para evitar overflow */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ======================= */
+/* Lista de la tripulación */
+/* ======================= */
+
+.hiring-crewList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ========================= */
+/* LISTA DE RECLUTAMIENTO */
+/* ========================= */
+
+.hiringList {
+  width: 100%;
+  max-width: 850px;
+  gap: 0;
+  box-sizing: border-box;
+}
+
+.hiring .title{
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box; /* Incluye padding y border en el ancho */
+  overflow-wrap: break-word; /* Rompe palabras largas si es necesario */
+  word-wrap: break-word; /* Compatibilidad con navegadores antiguos */
+  hyphens: auto; /* Añade guiones en palabras largas (opcional) */
+}
+
+
+.hiringList-content {
+  border: 3px solid #00ffff;
+  box-shadow: 0 0 3px #00ffff, 0 0 6px #00ffff;
+  background-color: rgba(0, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* ========================= */
+/* INPUT BUSCADOR */
+/* ========================= */
+
+.input {
+  padding: 10px;
+  border-radius: 50px;
+  text-align: center;
+  background-color: rgba(0, 255, 255, 0.1);
+  border: 2px solid #00ffff;
+  color: #00ffff;
+  font-family: 'Orbitron', sans-serif;
+  margin: 10px 0 20px 0;
+  width: 25%;
+  min-width: 150px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* ========================= */
+/* TABLA */
+/* ========================= */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+thead th {
+  padding: 12px 10px;
+  border-bottom: 2px solid #00ffff;
+  color: #00ffff;
+  font-weight: bold;
+}
+
+.trCharacters td {
+  padding: 15px 10px;
+  vertical-align: middle;
+}
+
+.trCharacters {
+  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+/* ========================= */
+/* IMÁGENES */
+/* ========================= */
+
+.imageCharacters {
+  width: 70px;
+  max-width: 100%;
+  height: auto;
+  border: 3px solid #00ffff;
+  box-shadow: 0 0 3px #00ffff, 0 0 6px #00ffff;
+  border-radius: 10px;
+  display: block;
+}
+
+/* ========================= */
+/* BOTONES */
+/* ========================= */
+
+.trCharacters button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 2px solid #00ffff;
+  background-color: rgba(0, 255, 255, 0.15);
+  color: #00ffff;
+  font-family: 'Orbitron', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.trCharacters button:hover:not(:disabled) {
+  background-color: rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 6px #00ffff;
+}
+
+.trCharacters button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ========== */
+/* RESPONSIVE */
+/* ========== */
+
+/* Tablets y pantallas medianas */
+@media (max-width: 1465px) {
+  .hiring {
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .hiring > article {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .hiring-crewList {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .hiring .crewList {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .hiring .crewList ul {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .hiring .crewList img {
+    width: 220px;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .hiringList {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .input {
+    width: 50%;
+    min-width: 200px;
+  }
+  
+  .hiringList-content {
+    overflow-x: auto;
+  }
+  
+  table {
+    min-width: 600px;
+  }
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+  .hiring .crewList img {
+    width: 180px;
+  }
+  
+  .input {
+    width: 100%;
+  }
+  
+  .hiringList-content {
+    padding: 15px;
+  }
+  
+  .trCharacters td {
+    padding: 10px 5px;
+    font-size: 14px;
+  }
+  
+  .trCharacters button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
