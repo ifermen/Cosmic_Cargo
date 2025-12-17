@@ -1,4 +1,4 @@
-import React, { useEffect, useState, type ChangeEvent } from "react";
+import { useEffect, useState, type ChangeEvent } from "react";
 import {
   fetchCharacters,
   getCharacterId,
@@ -8,7 +8,7 @@ import type { Character } from "../../types";
 import { CrewList } from "../../components/CrewList/CrewList";
 import "./Hiring.css";
 
-export const Hiring: React.FC = () => {
+export const Hiring = () => {
   //Estado que almacena los personajes obtenidos desde la api
   const [characters, setCharacters] = useState<Character[]>([]);
   const [search, setSearch] = useState<string>("");
