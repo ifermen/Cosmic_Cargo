@@ -3,7 +3,28 @@ import { useShipContext } from "../../contexts/ShipContext";
 import "./Home.css";
 
 export function Home() {
-  const { fuel, credit } = useShipContext();
+  const { fuel, credit,subtractCredit,addFuel } = useShipContext();
+
+  const handleClickReloadFuel = () => {
+    if(fuel < 100){
+      if(fuel <= 50){
+        if(credit >= 50){
+          subtractCredit(50);
+          addFuel(50);
+        }else{
+          alert("Credito insuficiente");
+        }
+      }else{
+        let fuelToAdd = 50 - (fuel - 50);
+        if(credit >= fuelToAdd){
+          subtractCredit(fuelToAdd);
+          addFuel(fuelToAdd);
+        }else{
+          alert("Credito insuficiente");
+        }
+      }
+    }
+  }
 
   return (
     <section className="home">
@@ -18,14 +39,15 @@ export function Home() {
               </div>
             ) : (
               <>
-                <h2>Fuel</h2>
+                <h3>Combustible</h3>
                 <div className="home__value">{fuel}</div>
               </>
             )}
+            <button className="btnReload" onClick={handleClickReloadFuel} disabled={fuel >= 100? true : false}>Recargar</button>
           </div>
 
           <div className="home__card home__card--credits">
-            <h2>Credit</h2>
+            <h3>Credit</h3>
             <div className="home__value">{credit}</div>
           </div>
         </div>
